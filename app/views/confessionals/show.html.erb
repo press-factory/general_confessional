@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Confessor:</strong>
+  <%= @confessional.confessor %>
+</p>
+
+<p>
+  <strong>Confession:</strong>
+  <%= @confessional.confession %>
+</p>
+
+<%= link_to 'Edit', edit_confessional_path(@confessional) %> |
+<%= link_to 'Back', confessionals_path %>

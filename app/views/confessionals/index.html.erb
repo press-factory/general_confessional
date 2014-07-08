@@ -1,0 +1,27 @@
+<h1>Listing confessionals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Confessor</th>
+      <th>Confession</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @confessionals.each do |confessional| %>
+      <tr>
+        <td><%= confessional.confessor %></td>
+        <td><%= confessional.confession %></td>
+        <td><%= link_to 'Show', confessional %></td>
+        <td><%= link_to 'Edit', edit_confessional_path(confessional) %></td>
+        <td><%= link_to 'Destroy', confessional, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Confessional', new_confessional_path %>
