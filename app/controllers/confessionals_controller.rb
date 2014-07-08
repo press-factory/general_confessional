@@ -1,5 +1,5 @@
 class ConfessionalsController < ApplicationController
-  before_action :set_confessional, only: [:show, :edit, :update, :destroy]
+  before_action :set_confessional, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /confessionals
   # GET /confessionals.json
