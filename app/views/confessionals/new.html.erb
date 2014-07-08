@@ -1,5 +1,6 @@
-<h1>New confessional</h1>
+<%- model_class = Confessional -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Confessional %></h1>
+</div>
+<%= render :partial => 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', confessionals_path %>

@@ -1,27 +1,38 @@
-<h1>Listing confessionals</h1>
-
-<table>
+<%- model_class = Confessional -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Confessional %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Confessor</th>
-      <th>Confession</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:confessor) %></th>
+      <th><%= model_class.human_attribute_name(:confession) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @confessionals.each do |confessional| %>
       <tr>
+        <td><%= confessional.id %></td>
         <td><%= confessional.confessor %></td>
         <td><%= confessional.confession %></td>
-        <td><%= link_to 'Show', confessional %></td>
-        <td><%= link_to 'Edit', edit_confessional_path(confessional) %></td>
-        <td><%= link_to 'Destroy', confessional, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l confessional.created_at, format: :long %></td>
+        <td>
+          <%= link_to confessional_path(confessional), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to confessional_path(confessional), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Confessional', new_confessional_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_confessional_path,
+            :class => 'btn btn-primary' %>

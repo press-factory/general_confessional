@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Confessional -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Confessional %></h1>
+</div>
 
-<p>
-  <strong>Confessor:</strong>
-  <%= @confessional.confessor %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:confessor) %></dt>
+      <dd><pre class="prettyprint"><%= @confessional.confessor %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:confession) %></dt>
+      <dd><pre class="prettyprint"><%= @confessional.confession %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Confession:</strong>
-  <%= @confessional.confession %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              confessionals_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_confessional_path(@confessional), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              confessional_path(@confessional),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<%= link_to 'Edit', edit_confessional_path(@confessional) %> |
-<%= link_to 'Back', confessionals_path %>
